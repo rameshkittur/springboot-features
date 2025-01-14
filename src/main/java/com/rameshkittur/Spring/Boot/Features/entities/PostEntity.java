@@ -2,6 +2,7 @@ package com.rameshkittur.Spring.Boot.Features.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "POSTS")
@@ -9,7 +10,8 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostEntity {
+@Audited
+public class PostEntity extends AuditableEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
