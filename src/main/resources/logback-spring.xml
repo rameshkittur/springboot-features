@@ -3,7 +3,14 @@
     <property name="LOG_DIR" value="./logs" />
     <property name="LOG_FILE" value="${LOG_DIR}/application.log" />
 
-    <!-- File Appender -->
+    <!-- Console Appender (For Terminal Logs) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender (For Saving Logs) -->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>${LOG_FILE}</file>
         <encoder>
@@ -13,6 +20,7 @@
 
     <!-- Root Logger -->
     <root level="info">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />  <!-- Logs to terminal -->
+        <appender-ref ref="FILE" />     <!-- Logs to file -->
     </root>
 </configuration>
